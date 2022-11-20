@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
-            $table->id();
+        Schema::create('packages', function (Blueprint $table) {
+           $table->id();
             $table->string('name');
-            $table->string('name_en');
-            $table->integer('city_num');
+            $table->double('monthly_price');
+            $table->double('yearly_price');
+            $table->double('discount');
+            $table->double('duration');
+             $table->timestamp('end_at')->nullable();
             $table->enum('status',['active','not_active'])->default('active');
             $table->boolean('is_deleted')->default(0);
-            $table->unsignedBigInteger('country_id')->nullable();
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('packages');
     }
 };
