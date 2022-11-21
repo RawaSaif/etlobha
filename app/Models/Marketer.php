@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Marketer extends Model
 {
     use HasFactory;
-      protected $fillable = ['name','email','password','image','gender','mobile','snapchat','facebook','twiter','whatsapp','youtube','city_id','country_id','register_status','status','is_delete'];
+      protected $fillable = ['name','email','password','image','gender','mobile','snapchat','facebook','twiter','whatsapp','youtube','city_id','country_id','register_status','status','is_deleted'];
 
           public function city()
     {
