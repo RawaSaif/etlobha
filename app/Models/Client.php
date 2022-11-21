@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Marketer extends Model
+class Client extends Model
 {
     use HasFactory;
-      protected $fillable = ['name','email','password','image','gender','mobile','snapchat','facebook','twiter','whatsapp','youtube','city_id','country_id','register_status','status','is_deleted'];
+    protected $fillable = ['first_name','last_name','email','image','gender','phoneNumber','city_id','country_id','status','is_deleted'];
 
     public function city()
     {
@@ -23,7 +23,7 @@ class Marketer extends Model
     {
         if (!is_null($image)) {
             if (gettype($image) != 'string') {
-                $i = $image->store('images/marketer', 'public');
+                $i = $image->store('images/client', 'public');
                 $this->attributes['image'] = $image->hashName();
             } else {
                 $this->attributes['image'] = $image;
@@ -36,6 +36,6 @@ class Marketer extends Model
         if (is_null($image)) {
             return   asset('assets/media/man.png');
         }
-        return asset('storage/images/marketer') . '/' . $image;
+        return asset('storage/images/client') . '/' . $image;
     }
 }

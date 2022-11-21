@@ -28,7 +28,7 @@ class MarketerResource extends JsonResource
             'twiter' => $this->twiter,
             'whatsapp' => $this->whatsapp,
             'youtube' => $this->youtube,
-            'image' => asset('images/marketer/' . $this->image),
+            'image' =>$this->image,
             'status' => $this->status,
             'is_deleted' => $this->is_deleted,
             'register_status' => $this->register_status,

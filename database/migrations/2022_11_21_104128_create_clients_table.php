@@ -13,27 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('marketers', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
-            $table->string('password');
             $table->string('image')->nullable();
             $table->enum('gender',['male','female'])->nullable();
             $table->string('phoneNumber')->nullable();
-            $table->string('snapchat');
-            $table->string('facebook');
-            $table->string('twiter');
-            $table->string('whatsapp');
-            $table->string('youtube');
-            $table->enum('status',['active','not_active'])->default('active');
-            $table->enum('register_status',['active','not_active'])->default('active');
-            $table->boolean("is_deleted")->default(0);
             $table->unsignedBigInteger('country_id')->nullable();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
              $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
-
+            $table->enum('status',['active','not_active'])->default('active');
+            $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });
     }
@@ -45,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marketers');
+        Schema::dropIfExists('clients');
     }
 };
