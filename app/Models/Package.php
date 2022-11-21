@@ -14,5 +14,14 @@ class Package extends Model
     {
         return $this->hasMany(Store::class);
     }
+      public function plans()
+{
+    return $this->belongsToMany(
+        Plan::class,
+        'packages_plans',
+        'plan_id',
+        'package_id'
+        );
+    }
 }
 
