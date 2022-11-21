@@ -32,5 +32,13 @@ class Store extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-
+    public function setting()
+    {
+        return $this->belongsTo(Setting::class, 'setting_id', 'id');
+    }
+    
+    public function page()
+    {
+        return $this->hasMany(Page::class);
+    }
 }
